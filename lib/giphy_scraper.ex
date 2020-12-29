@@ -1,10 +1,9 @@
 defmodule GiphyScraper do
 
-  def search(api_key, request_limit) do
-    my_key = api_key
-    my_limit = request_limit
-    GetApiData.request_data(my_key, my_limit)
-    result = Jason.decode!(GetApiData.request_data(my_key, my_limit))
+  def search(query) do
+    query = to_string(query)
+    fetched_data = GetApiData.request_data(query)
+    result = Jason.decode!(fetched_data)
     %{"data" => value} = result
     Enum.map(value, fn v -> DataParser.data_extractor(v) end)
   end
