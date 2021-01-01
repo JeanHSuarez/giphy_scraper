@@ -1,15 +1,8 @@
 defmodule GiphyImage do
-
-	defstruct [
-					id: "some_id", 
-					url: "url_to_gif", 
-					username: "username of creator", 
-					title: "SomeGif"
-			]
+	defstruct [id: "default_id", url: "default_url", username: "default_username", title: "default_title"]
 end
 
 defmodule DataProcessing.DataProcessing do
-	
 	def request_data(anything) do
 		response = HTTPoison.get!"https://api.giphy.com/v1/gifs/search?api_key=tbH6BNzvYf6c2chgNl3kLIAmPa4r8iFZ&q=#{anything}&limit=25&offset=0&rating=g&lang=en"
 		HTTPoison.Handlers.Multipart.decode_body(response)
