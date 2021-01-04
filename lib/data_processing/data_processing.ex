@@ -9,8 +9,9 @@ defmodule DataProcessing.DataProcessing do
 		%{"data" => value} = "https://api.giphy.com/v1/gifs/search?api_key=#{api_key}&q=#{anything}&limit=25&offset=0&rating=g&lang=en" 
 		|> HTTPoison.get!
 		|> HTTPoison.Handlers.Multipart.decode_body
-		|> Jason.decode!
-		Enum.map(value, fn v -> populate_struct(v) end)
+		|> Jason.decode! 
+		value
+		|> Enum.map(fn v -> populate_struct(v) end)
 	end
 
 	def populate_struct(%{"id" => id, "url" => url, "username" => username, "title" => title}) do
