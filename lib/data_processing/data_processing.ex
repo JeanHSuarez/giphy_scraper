@@ -1,4 +1,3 @@
-
 require GiphyImage
 
 defmodule DataProcessing.DataProcessing do
