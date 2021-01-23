@@ -1,6 +1,6 @@
 defmodule GiphyScraper do
   defdelegate search(query),
-    to: DataProcessing.DataProcessing
+    to: DataParser.PreProcessing
 end
 
 
